@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->float('number',6, 0);
-            $table->string('email', 50);
+            $table->string('email', 50)->unique();
             $table->timestamps();
         });
     }
