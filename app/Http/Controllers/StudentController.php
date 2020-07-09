@@ -26,7 +26,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return 'form per la creazione di uno studente';
+        return view('students.create');
     }
 
     /**
@@ -37,7 +37,11 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dati = $request->all();
+        $nuovo_studente = new Student();
+        $nuovo_studente->fill($dati);
+        $nuovo_studente->save();
+        return redirect()->route('students.index');
     }
 
     /**
@@ -46,9 +50,11 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Student $student)
     {
-        //
+        // $studente = Student::find($id);
+        // return view('students.show', compact('studente'));
+        return view('students.show', ['studente' => $student]);
     }
 
     /**
