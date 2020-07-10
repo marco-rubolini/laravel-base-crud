@@ -27,7 +27,7 @@
                                 <td>{{ $studente->number }}</td>
                                 <td class="text-right">
                                     <a class="btn btn-info btn-sm" href="{{ route('students.show', ['student' => $studente->id]) }}">Dettagli</a>
-                                    <a class="btn btn-warning btn-sm" href="#">Modifica</a>
+                                    <a class="btn btn-warning btn-sm" href="{{ route('students.edit', ['student' => $studente->id]) }}">Modifica</a>
                                     <a class="btn btn-danger btn-sm" href="#">Elimina</a>
                                 </td>
                             </tr>

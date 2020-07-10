@@ -10,19 +10,19 @@
                 <div class="d-flex flex-column bd-highlight mb-3">
                     <div class="p-2 bd-highlight">
                         <Strong>Matricola numero: </Strong>
-                        {{$studente->number}}
+                        {{$student->number}}
                     </div>
                     <div class="p-2 bd-highlight">
                         <Strong>Nome: </Strong>
-                        {{$studente->first_name}}
+                        {{$student->first_name}}
                     </div>
                     <div class="p-2 bd-highlight">
                         <Strong>Cognome: </Strong>
-                        {{$studente->last_name}}
+                        {{$student->last_name}}
                     </div>
                     <div class="p-2 bd-highlight">
                         <Strong>Email: </Strong>
-                        {{$studente->email}}
+                        {{$student->email}}
                     </div>
                 </div>
             </div>
