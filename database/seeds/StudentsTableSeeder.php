@@ -17,7 +17,7 @@ class StudentsTableSeeder extends Seeder
             $new_student = new Student();
             $new_student->first_name = $faker->firstName;
             $new_student->last_name = $faker->lastName;
-            $new_student->number = $faker->numberBetween(00001, 10000 );
+            $new_student->number = $faker->numberBetween(10000, 20000 );
             $new_student->email = $faker->email;
             $new_student->save();
         }

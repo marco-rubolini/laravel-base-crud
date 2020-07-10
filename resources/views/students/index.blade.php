@@ -16,7 +16,7 @@
                             <th>Nome</th>
                             <th>Cognome</th>
                             <th>Matricola</th>
-                            <th>Azioni</th>
+                            <th class="text-right">Azioni</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,8 +25,10 @@
                                 <td>{{ $studente->first_name }}</td>
                                 <td>{{ $studente->last_name }}</td>
                                 <td>{{ $studente->number }}</td>
-                                <td>
-                                    <a class="btn btn-info" href="{{ route('students.show', ['student' => $studente->id]) }}">Dettagli</a>
+                                <td class="text-right">
+                                    <a class="btn btn-info btn-sm" href="{{ route('students.show', ['student' => $studente->id]) }}">Dettagli</a>
+                                    <a class="btn btn-warning btn-sm" href="#">Modifica</a>
+                                    <a class="btn btn-danger btn-sm" href="#">Elimina</a>
                                 </td>
                             </tr>
                         @endforeach
