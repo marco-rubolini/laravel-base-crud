@@ -25,6 +25,11 @@
                         {{$student->email}}
                     </div>
                 </div>
+                <form class="p-2 delete" action="{{ route('students.destroy', ['student' => $student->id]) }}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <input type="submit" class="btn btn-danger btn-sm" value="Elimina" href="">
+                </form>
             </div>
         </div>
     </div>

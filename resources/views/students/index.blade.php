@@ -20,18 +20,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($studenti as $studente)
+                        @forelse ($studenti as $student)
                             <tr>
-                                <td>{{ $studente->first_name }}</td>
-                                <td>{{ $studente->last_name }}</td>
-                                <td>{{ $studente->number }}</td>
+                                <td>{{ $student->first_name }}</td>
+                                <td>{{ $student->last_name }}</td>
+                                <td>{{ $student->number }}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-info btn-sm" href="{{ route('students.show', ['student' => $studente->id]) }}">Dettagli</a>
-                                    <a class="btn btn-warning btn-sm" href="{{ route('students.edit', ['student' => $studente->id]) }}">Modifica</a>
-                                    <a class="btn btn-danger btn-sm" href="#">Elimina</a>
+                                    <a class="btn btn-info btn-sm" href="{{ route('students.show', ['student' => $student->id]) }}">Dettagli</a>
+                                    <a class="btn btn-warning btn-sm" href="{{ route('students.edit', ['student' => $student->id]) }}">Modifica</a>
+                                    <form class="delete" action="{{ route('students.destroy', ['student' => $student->id]) }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <input type="submit" class="btn btn-danger btn-sm" value="Elimina" href="">
+                                    </form>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr colspan='3'>
+                                <td>Non è presente nessuno studente</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

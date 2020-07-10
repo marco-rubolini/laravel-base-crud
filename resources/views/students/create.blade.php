@@ -20,19 +20,19 @@
                     @csrf
                     <div class="form-group">
                         <label for="matricola">Numero Matricola</label>
-                        <input type="number" name="number" class="form-control" id="matricola" placeholder="Inserisci il numero di matricola dello studente" value="{{ old('number') }}">
+                        <input type="number" name="number" class="form-control" id="matricola" placeholder="Inserisci il numero di matricola dello studente" value="{{ old('number') required }}">
                     </div>
                     <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" name="first_name" class="form-control" id="nome" placeholder="Inserisci il nome dello studente" value="{{ old('first_name') }}">
+                        <input type="text" name="first_name" class="form-control" id="nome" placeholder="Inserisci il nome dello studente" value="{{ old('first_name') required}}">
                     </div>
                     <div class="form-group">
                         <label for="cognome">Cognome</label>
-                        <input type="text" name="last_name" class="form-control" id="cognome" placeholder="Inserisci il cognome dello studente" value="{{ old('last_name') }}">
+                        <input type="text" name="last_name" class="form-control" id="cognome" placeholder="Inserisci il cognome dello studente" value="{{ old('last_name') required}}">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" id="email" placeholder="Inserisci email dello studente" value="{{ old('email') }}">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Inserisci email dello studente" value="{{ old('email') required}}">
                     </div>
                     <button type="submit" class="btn btn-primary">Salva</button>
                 </form>

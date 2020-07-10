@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
 {
@@ -38,9 +39,9 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'number' => 'required|numeric|min:1',
-            'first_name' => 'required|size:255',
-            'last_name' => 'required|size:255',
+            'number' => 'required|numeric|min:1|unique:students,number',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
             'email' => 'required|email:rfc|unique:App\Student,email'
         ]);
         $dati = $request->all();
@@ -69,9 +70,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        $student = Student::find($id);
+        // $student = Student::find($id);
         return view('students.edit', compact('student'));
     }
 
@@ -84,7 +85,17 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+        $request->validate([
+            'number' => 'required|numeric|min:1',Rule::unique('students')->ignore($student->id),
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email:rfc',Rule::unique('students')->ignore($student->id)
+        ]);
+        // $student = Student::find($id);
+        $dati = $request->all();
+        $student->update($dati);
+        return redirect()->route('students.index');
     }
 
     /**
@@ -95,6 +106,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+        return redirect()->route('students.index');
     }
 }
